@@ -3,6 +3,13 @@
 NODE_VERSION_PREFERED="12.16.0"
 NVM_VERSION_NEEDED="0.35.2"
 
+function log_to_file() {
+    touch "$1" || echo "Cannot create log file [$1]. Not logging to it." && return 1
+    [ "$2" = "true" ] && : >"$1"
+    exec >  >(tee -ia "$1")
+    exec 2> >(tee -ia "$1" >&2)
+}
+
 function get_command() {
     local COMMAND
     local FOUND_COMMAND
@@ -33,6 +40,8 @@ function get_command() {
 }
 
 mkdir -p "$HOME"/.config/balsa/logs
+log_to_file "$HOME/.config/balsa/logs/init_balsa.log" "true"
+
 rm -rf "$HOME"/.config/balsa/balsa
 mkdir -p "$HOME"/.config/balsa/balsa
 
@@ -176,5 +185,5 @@ $GIT clone https://github.com/arbrebinaire/balsa.git .
 
 $NPM install -g
 
-echo "L'initialisation de Balsa a été réussie."
-echo "Prière de lancer maintenant la commande [balsa install] pour compléter l'installation."
+echo -e "L'initialisation de Balsa a été \e[32mréussie\e[0m."
+echo -e "Prière de lancer maintenant la commande [\e[32mbalsa install\e[0m] pour compléter l'installation."
