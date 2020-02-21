@@ -1,0 +1,25 @@
+#!/bin/bash
+
+declare -a GOOGLE_ACCOUNTS=($1)
+MOUNT_COMMAND=${2:-google-drive-ocamlfuse}
+PING_COMMAND=${3:-wget -q --spider http://google.com}
+ACCOUNTSPATH=$HOME/cloud
+
+
+while true; do
+  # check to see if there is a connection by pinging a Google server
+  if $PING_COMMAND; then
+    # if connected, mount the drive and break the loop
+    echo "Connected to the Internet"
+    for account in "${GOOGLE_ACCOUNTS[@]}"
+    do
+        $MOUNT_COMMAND -label "$account"  "$ACCOUNTSPATH/$account" && echo "Success mounting [$ACCOUNTSPATH/$account]" || echo "ERROR mounting [$ACCOUNTSPATH/$account]"
+    done
+    break;
+  else
+    # if not connected, wait for one second and then check again
+    echo Not connected to the Internet: sleeping 1 second...
+    sleep 1
+    echo Finished sleeping: testing connexion once more...
+  fi
+done

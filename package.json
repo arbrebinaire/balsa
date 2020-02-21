@@ -1,0 +1,28 @@
+{
+  "name": "balsa",
+  "version": "1.0.0",
+  "description": "Utilitaire d'installation de scripts et d'initialisation de projets de programmation",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^5.0.1",
+    "figlet": "^1.2.4",
+    "inquirer": "^7.0.4",
+    "lodash": "^4.17.15",
+    "minimist": "^1.2.0",
+    "shelljs": "^0.8.3",
+    "touch": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "balsa": "./index.js"
+  },  
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
