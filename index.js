@@ -6,7 +6,7 @@ const figlet = require('figlet');
 
 const install = require('./lib/installer').installBalsa;
 const run = require('./lib/runner').run;
-const update = require('./lib/update').update;
+const update = require('./lib/updater').update;
 
 
 clear();
