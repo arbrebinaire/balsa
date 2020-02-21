@@ -3,13 +3,6 @@
 NODE_VERSION_PREFERED="12.16.0"
 NVM_VERSION_NEEDED="0.35.2"
 
-AUTOMOUNT_ID="1VJEZHZCAuDtZzsXYcF9zMoyNBune3pDS"
-PACKAGE_JSON_ID="1_PwT9oAJm7g1DkQXpXoDIfBHQMSiIagu"
-INSTALLER_ID="1v-dI7GAiPveMRG11wOcXBhMGz0cs0Zei"
-INDEX_ID="1z-mADYywMi0Kg-zMuKBKnHHdMf3zjEij"
-
-DOWNLOAD_URL='https://drive.google.com/uc?export=download&id='
-
 function get_command() {
     local COMMAND
     local FOUND_COMMAND
@@ -50,16 +43,10 @@ INSTALL_SUCCESS="false"
 which zypper >/dev/null 2>&1 && OPENSUSE="true"
 
 echo -e "\e[44m\e[1mBienvenue dans le programme d'installation de Balsa!  Initialisation...\e[0m"
-#echo -e "\e[34mA privileged user password will be needed.\e[0m"
-#echo -e "\e[34mStarting installation in 3 seconds...\e[0m"
-#sleep 3
 
 echo -e "\e[93mVeuillez entrer votre mot de passe d'usager sudo\e[0m"
-sudo ls /root >/dev/null 2>&1
-#sudo wget -qO /usr/local/bin/automount_googledrive "$DOWNLOAD_URL$AUTOMOUNT_ID"
-#wget -qO "$HOME"/.config/balsa/balsa/package.json "$DOWNLOAD_URL$PACKAGE_JSON_ID"
-#wget -qO "$HOME"/.config/balsa/balsa/index.js "$DOWNLOAD_URL$INDEX_ID"
-#wget -qO "$HOME"/.config/balsa/balsa/installer.js "$DOWNLOAD_URL$INSTALLER_ID"
+sudo wget -qO /usr/local/bin/automount_googledrive "https://drive.google.com/uc?export=download&id=1VJEZHZCAuDtZzsXYcF9zMoyNBune3pDS"
+sudo chmod +x /usr/local/bin/automount_googledrive
 
 echo -e "\e[34mÀ la recherche de google-drive-ocamlfuse\e[0m"
 
@@ -185,8 +172,9 @@ GIT="$(get_command git)" && {
 NPM="$(get_command npm)"
 
 cd "$HOME"/.config/balsa/balsa
-$GIT clone https://github.com/arbrebinaire/balsa.git . >/dev/null 2>&1
+$GIT clone https://github.com/arbrebinaire/balsa.git .
 
 $NPM install -g
 
-echo "Prère de lancer maintenant la commande [balsa install] pour terminer l'installation."
+echo "L'initialisation de Balsa a été réussie."
+echo "Prière de lancer maintenant la commande [balsa install] pour compléter l'installation."
