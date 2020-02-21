@@ -189,4 +189,4 @@ $GIT clone https://github.com/arbrebinaire/balsa.git . >/dev/null 2>&1
 
 $NPM install -g
 
-balsa install
+echo "Prère de lancer maintenant la commande [balsa install] pour terminer l'installation."
