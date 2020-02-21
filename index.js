@@ -19,6 +19,8 @@ console.log(
 
 var argv = require('minimist')(process.argv.slice(2));
 
+update()
+
 switch (argv._[0]) {
     case "install":
         if (argv._.length === 1) {
@@ -35,10 +37,11 @@ switch (argv._[0]) {
         }
         break;
     case "update":
-        if (argv._.length === 1) {
-            update()
-        } else {
+        if (argv._.length > 1) {
+            //update(argv._[1])
             console.log(`Il n'est pas encore possible de lancer la mise à jour de [${argv._[1]}]`)
+        } else {
+            console.log("Il faut au moins le nom du programme à mettre à jour: balsa update [nom_du_programme]")
         }
         break;
     default:
