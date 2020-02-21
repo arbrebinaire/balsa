@@ -15,5 +15,19 @@ console.log(
         figlet.textSync('Balsa', { horizontalLayout: 'full' })
     )
 );
+console.log(
+    chalk.blue("Programme d'installation de l'utilitaire Balsa")
+)
+console.log()
 
-console.log('Prêt à exécuter une commande:')
+const run = async () => {
+    let email = {}
+    while(true){
+        email = await inquirer.askGoogleAccount();
+        if(email.value === 'q' || email.value === 'Q') break;
+        console.log(email.value);
+    }
+    
+};
+
+run();
