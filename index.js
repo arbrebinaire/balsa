@@ -40,9 +40,9 @@ switch (argv._[0]) {
         if (argv._.length > 1) {
             //update(argv._[1])
             console.log(`Il n'est pas encore possible de lancer la mise à jour de [${argv._[1]}]`)
-        } else {
+        } /* else {
             console.log("Il faut au moins le nom du programme à mettre à jour: balsa update [nom_du_programme]")
-        }
+        } */
         break;
     default:
         console.log("Cette commande n'est pas reconnue")
