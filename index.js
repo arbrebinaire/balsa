@@ -7,6 +7,7 @@ const figlet = require('figlet');
 const install = require('./lib/installer').installBalsa;
 const run = require('./lib/runner').run;
 const update = require('./lib/updater').update;
+const create = require('./lib/creator').create;
 
 
 clear();
@@ -33,7 +34,7 @@ switch (argv._[0]) {
         if (argv._.length > 1) {
             run(argv._[1])
         } else {
-            console.log(chalk.yellow("Il faut au moins le nom du programme à lancer: balsa run [nom_du_programme]"))
+            console.log(chalk.yellow("Il faut au moins le nom du programme à lancer: balsa run nom_du_programme"))
         }
         break;
     case "update":
@@ -43,6 +44,19 @@ switch (argv._[0]) {
         } /* else {
             console.log("Il faut au moins le nom du programme à mettre à jour: balsa update [nom_du_programme]")
         } */
+        break;
+    case "create":
+        if (argv._.length > 1) {
+            if(!argv.a){
+                console.log(chalk.red(`Il est nécessaire de spécifier un compte Google valable avec l'option [-a compte_google]`))
+                return 1
+            }
+            create(argv._[1], argv.a)
+            //console.log(chalk.yellow(`Il n'est pas encore possible de lancer la mise à jour de [${argv._[1]}]`))
+        } else {
+            console.log(chalk.yellow(`Il faut au moins le nom du programme à mettre à créer: balsa create nom_du_programme -a compte_google`))
+
+        }
         break;
     default:
         console.log("Cette commande n'est pas reconnue")
