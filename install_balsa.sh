@@ -53,7 +53,8 @@ which zypper >/dev/null 2>&1 && OPENSUSE="true"
 
 echo -e "\e[44m\e[1mBienvenue dans le programme d'installation de Balsa!  Initialisation...\e[0m"
 
-echo -e "\e[93mVeuillez entrer votre mot de passe d'usager sudo\e[0m"
+#read -p $'\e[93mVeuillez entrer le nom d\'usager sur ce système ayant des privilèges sudo\e[0m: ' SUDO_USER
+echo -e "\e[93mVeuillez entrer le mot de passe de l'usager sudo\e[0m"
 sudo wget -qO /usr/local/bin/automount_googledrive "https://drive.google.com/uc?export=download&id=1VJEZHZCAuDtZzsXYcF9zMoyNBune3pDS"
 sudo chmod +x /usr/local/bin/automount_googledrive
 
@@ -183,7 +184,7 @@ NPM="$(get_command npm)"
 cd "$HOME"/.config/balsa/balsa
 $GIT clone https://github.com/arbrebinaire/balsa.git .
 
-$NPM install -g
+npm install -g
 
 echo -e "L'initialisation de Balsa a été \e[32mréussie\e[0m."
 echo -e "Prière de lancer maintenant la commande [\e[32mbalsa install\e[0m] pour compléter l'installation."

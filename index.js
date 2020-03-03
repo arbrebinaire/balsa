@@ -32,7 +32,8 @@ switch (argv._[0]) {
         break;
     case "run":
         if (argv._.length > 1) {
-            run(argv._[1])
+            console.log(argv)
+            //run(argv._[1])
         } else {
             console.log(chalk.yellow("Il faut au moins le nom du programme à lancer: balsa run nom_du_programme"))
         }
