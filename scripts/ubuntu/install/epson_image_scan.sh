@@ -41,8 +41,9 @@ sudo apt-get install "$BUNDLENAME" && {
         exit 0
     } || {
         echo
-        echo "Horreur! La première méthode a échoué aussi"
+        echo "Horreur! La deuxième méthode a échoué aussi"
         echo "Suis à bout de ressource, désolé :-("
+        echo "C'est pas ma phôte: se plaindre à grand bruit auprès du programmeur de malheur."
         echo
         exit 1
     }   
