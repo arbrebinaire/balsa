@@ -8,7 +8,7 @@ sleep 3
 
 TMPDIR="$(mktemp -d)"
 FILE="$TMPDIR"/installer.deb.tar.gz
-BUNDLENAME="iscan-gt-x820-bundle-2.30.4.x64.deb"
+BUNDLEDIR="iscan-gt-x820-bundle-2.30.4.x64.deb"
 
 wget -O "$FILE" https://download2.ebz.epson.net/iscan/plugin/gt-x820/deb/x64/iscan-gt-x820-bundle-2.30.4.x64.deb.tar.gz
 
@@ -16,35 +16,29 @@ cd "$TMPDIR"
 
 tar -xvf installer.deb.tar.gz
 
-echo
-echo "Tentons d'installer au moyen de la méthode la plus appropriée"
-echo "Le mot de passe sudo est nécessaire"
-echo
+cd "$BUNDLEDIR"
 
-sudo apt-get install "$BUNDLENAME" && {
+echo
+echo "Tentative d'installation"
+echo "Le mot de passe sudo sera peut-être nécessaire"
+echo
+sleep 3
+
+./install.sh && {
+
     echo
-    echo "SUCCÈS! La première méthode a fonctionné"
+    echo "L'installateur a terminé son travail"
     echo "Le programme devrait être fonctionnel ;-)"
     echo
     exit 0
-} || {
+
+ } || {
+
     echo
-    echo "ÉCHEC :-("
-    echo "Tentons une deuxième méthode dans 3 secondes"
+    echo "Horreur! L'installateur a échoué"
+    echo "Suis à bout de ressource, désolé :-("
+    echo "C'est pas ma phôte: se plaindre à grand bruit auprès du programmeur de malheur."
     echo
-    sleep 3
-    sudo dpkg -i "$BUNDLENAME" && sudo apt-get install -f && {
-        echo
-        echo "SUCCÈS! La seconde méthode a fonctionné"
-        echo "Le programme devrait être fonctionnel ;-)"
-        echo
-        exit 0
-    } || {
-        echo
-        echo "Horreur! La deuxième méthode a échoué aussi"
-        echo "Suis à bout de ressource, désolé :-("
-        echo "C'est pas ma phôte: se plaindre à grand bruit auprès du programmeur de malheur."
-        echo
-        exit 1
-    }   
+    exit 1
+
 }
