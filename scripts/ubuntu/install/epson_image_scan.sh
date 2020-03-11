@@ -18,7 +18,7 @@ echo
 echo "Tentons d'installer au moyen de la méthode la plus appropriée"
 echo "Le mot de passe sudo est nécessaire"
 
-exit 0
+exit 1
 
 sudo apt-get install "$BUNDLENAME" && {
     echo "SUCCÈS! La première méthode a fonctionné"
