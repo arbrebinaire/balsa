@@ -4,8 +4,6 @@ echo "Programme d'installation des drivers et programmes pour le scanner [GT-X82
 echo "Voir: http://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=&DSCMI=97926&DSCCHK=65006f869474652dda84a6205776cce13679d820"
 sleep 3
 
-exit 0
-
 TMPDIR="$(mktemp -d)"
 FILE="$TMPDIR"/installer.deb.tar.gz
 BUNDLENAME="iscan-gt-x820-bundle-2.30.4.x64.deb"
@@ -19,6 +17,8 @@ tar -xvf installer.deb.tar.gz
 echo
 echo "Tentons d'installer au moyen de la méthode la plus appropriée"
 echo "Le mot de passe sudo est nécessaire"
+
+exit 0
 
 sudo apt-get install "$BUNDLENAME" && {
     echo "SUCCÈS! La première méthode a fonctionné"
