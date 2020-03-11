@@ -2,6 +2,7 @@
 
 echo
 echo "Programme d'installation des drivers et programmes pour le scanner [GT-X820, Perfection V600 photo]"
+echo
 echo "Voir: http://download.ebz.epson.net/dsc/du/02/DriverDownloadInfo.do?LG2=EN&CN2=&DSCMI=97926&DSCCHK=65006f869474652dda84a6205776cce13679d820"
 echo
 sleep 3
