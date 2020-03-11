@@ -4,7 +4,8 @@ const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
 
-const install = require('./lib/installer').installBalsa;
+const install = require('./lib/installer').install;
+const installBalsa = require('./lib/installer').installBalsa;
 const run = require('./lib/runner').run;
 const update = require('./lib/updater').update;
 const create = require('./lib/creator').create;
@@ -25,9 +26,14 @@ update()
 switch (argv._[0]) {
     case "install":
         if (argv._.length === 1) {
-            install()
+            installBalsa()
         } else {
-            console.log(`Il n'est pas encore possible de lancer l'installation de [${argv._[1]}]`)
+            console.log(chalk.blue("Lancement du programme d'installation de [") + chalk.blue.inverse(argv._[2]) + chalk.blue("] pour l'OS [") + chalk.blue.inverse(argv._[1]) + chalk.blue("]"))
+            if(typeof argv._[1] === 'string' && typeof argv._[2] === 'string'){
+                install(argv._[2], argv._[1])
+            } else {
+                console.log(chalk.yellow("Il semble manquer un ou plusieurs arguments. Exemple: balsa install ubuntu nom_du_programme"))
+            }
         }
         break;
     case "run":
