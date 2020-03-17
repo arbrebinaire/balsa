@@ -11,14 +11,17 @@ cd "$BALSADIR" 2>&1 && {
     npm install -g 2>&1 && {
         echo
         echo "Succès: Balsa a été réinstallé de tout frais :-)"
+        echo
         exit 0
     } || {
         echo
         echo "Échec de la réinstallation de Balsa: envoyer le fichier $(pwd)/renew_balsa_log.txt au diable de programmeur"
+        echo
         exit 1
     }
 } || {
     echo
     echo "Impossible de changer le répertoire actif pour ["$HOME"/.config/balsa/balsa].  Échec de la réinstallation de Balsa"
+    echo
     exit 1
 }
