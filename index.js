@@ -10,7 +10,6 @@ const run = require('./lib/runner').run;
 const update = require('./lib/updater').update;
 const create = require('./lib/creator').create;
 
-
 clear();
 
 console.log(
@@ -29,7 +28,7 @@ switch (argv._[0]) {
             installBalsa()
         } else {
             console.log(chalk.blue("Lancement du programme d'installation de [") + chalk.blue.inverse(argv._[2]) + chalk.blue("] pour l'OS [") + chalk.blue.inverse(argv._[1]) + chalk.blue("]"))
-            if(typeof argv._[1] === 'string' && typeof argv._[2] === 'string'){
+            if (typeof argv._[1] === 'string' && typeof argv._[2] === 'string') {
                 install(argv._[2], argv._[1])
             } else {
                 console.log(chalk.yellow("Il semble manquer un ou plusieurs arguments. Exemple: balsa install ubuntu nom_du_programme"))
@@ -41,7 +40,7 @@ switch (argv._[0]) {
             const progName = argv._[1]
             argv._.shift() //Remove "run"
             argv._.shift() //Remove name of prog
-            run(progName, argv)
+            run(progName, process.argv)
         } else {
             console.log(chalk.yellow("Il faut au moins le nom du programme à lancer: balsa run nom_du_programme"))
         }
@@ -56,7 +55,7 @@ switch (argv._[0]) {
         break;
     case "create":
         if (argv._.length > 1) {
-            if(!argv.a){
+            if (!argv.a) {
                 console.log(chalk.red(`Il est nécessaire de spécifier un compte Google valable avec l'option [-a compte_google]`))
                 return 1
             }
